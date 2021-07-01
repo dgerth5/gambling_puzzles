@@ -21,12 +21,10 @@ app = shinyApp(ui = fluidPage(title = "Sportsbook Buyout Comparison",
                    round((input$offer - input$ib)/input$br + 1,4)
                  })
                  output$kelly_br_growth = renderText({
-                   convert_amer_odds = if_else(input$odds > 0, input$odds / 100 + 1, 1 - 100/input$odds)
+                   convert_amer_odds = if_else(input$odds > 0, input$odds / 100 + 1, 1 / (input$odds / (input$odds - 100)))
                    estimated_loss = 1 - input$estprob
-                   br_size = ((convert_amer_odds)*input$estprob - estimated_loss)/(convert_amer_odds) # kelly formula
+                   br_size = ((input$estprob*convert_amer_odds) - 1) / (convert_amer_odds - 1) # kelly formula
                    round(exp(estimated_loss*log(1-br_size) + input$estprob*log(1+(convert_amer_odds-1)*br_size)),4)
                  })
                })
-runApp(app)                  
-
-
+runApp(app)             
