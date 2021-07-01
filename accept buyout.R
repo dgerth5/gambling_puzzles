@@ -1,3 +1,8 @@
+# This shiny app is intended to compare the offer made by a sportsbook to cash out bet
+# I would expect that the kelly estimated expected growth figure is always higher than what the sportsbook would offer
+
+
+
 library(tidyverse)
 library(shiny)
 
@@ -20,7 +25,7 @@ app = shinyApp(ui = fluidPage(title = "Sportsbook Buyout Comparison",
                  output$kelly_br_growth = renderText({
                    convert_amer_odds = if_else(input$odds > 0, input$odds / 100, -100 / input$odds)
                    estimated_loss = 1 - input$estprob
-                   br_size = ((convert_amer_odds)*input$estprob - estimated_loss)/(convert_amer_odds)
+                   br_size = ((convert_amer_odds)*input$estprob - estimated_loss)/(convert_amer_odds) # kelly formula
                    round(exp(estimated_loss*log(1-br_size) + input$estprob*log(1+(convert_amer_odds-1)*br_size)),4)
                  })
                })
