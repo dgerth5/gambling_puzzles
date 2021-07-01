@@ -1,7 +1,5 @@
-# This shiny app is intended to compare the offer made by a sportsbook to cash out bet
-# I would expect that the kelly estimated expected growth figure is always higher than what the sportsbook would offer
-
-
+# This shiny app is intended to compare the offer made by a sportsbook to cash out a bet
+# I would expect that the kelly estimated expected growth figure is always higher than what the sportsbook would offer, since the sportsbook wants to make a profit
 
 library(tidyverse)
 library(shiny)
