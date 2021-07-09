@@ -1,3 +1,6 @@
+# meant for a 4 game series. but strategy can be applied to an even number of games
+# given two sets of odds, one where it is a binary win/loss and the other a win/loss/tie, which one should a bettor choose assuming each game has the same probability.
+
 library(ggplot2)
 
 comb = function(n, x) {
